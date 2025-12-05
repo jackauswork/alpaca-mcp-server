@@ -1,9 +1,11 @@
+```markdown
 <p align="center">
   <img src="https://raw.githubusercontent.com/alpacahq/alpaca-mcp-server/main/assets/01-primary-alpaca-logo.png" alt="Alpaca logo" width="220">
 </p>
 
 <div align="center">
 
+[![smithery badge](https://smithery.ai/badge/@jackauswork/alpaca-mcp-server1)](https://smithery.ai/server/@jackauswork/alpaca-mcp-server1)
 <a href="https://x.com/alpacahq?lang=en" target="_blank"><img src="https://img.shields.io/badge/X-DCDCDC?logo=x&logoColor=000" alt="X"></a>
 <a href="https://www.reddit.com/r/alpacamarkets/" target="_blank"><img src="https://img.shields.io/badge/Reddit-DCDCDC?logo=reddit&logoColor=000" alt="Reddit"></a>
 <a href="https://alpaca.markets/slack" target="_blank"><img src="https://img.shields.io/badge/Slack-DCDCDC?logo=slack&logoColor=000" alt="Slack"></a>
@@ -197,7 +199,7 @@ Cursor users can install Alpaca's MCP Server directly from the Cursor Directory 
 **1. Find Alpaca in the [Cursor Directory](https://cursor.directory/mcp/alpaca)**\
 **2. Click "Add to Cursor" to launch Cursor on your computer**\
 **3. Enter your API Key and Secret Key**\
-**4. You’re all set to start using it**
+**4. You're all set to start using it**
 
 </details>
 
@@ -392,7 +394,7 @@ alpaca-mcp-server/          ← This is the workspace folder (= project root)
 <details>
 <summary><b>Watchlists</b></summary>
 
-> At this moment, you can only view and update trading watchlists created via Alpaca’s Trading API through the API itself
+> At this moment, you can only view and update trading watchlists created via Alpaca's Trading API through the API itself
 43. Create a new watchlist called "Tech Stocks" with AAPL, MSFT, and NVDA.
 44. Update my "Tech Stocks" watchlist to include TSLA and AMZN.
 45. What stocks are in my "Dividend Picks" watchlist?
@@ -638,18 +640,18 @@ Choose `claude` when prompted. The installer sets up `.venv`, writes `.env`, and
 
 **Note: These steps assume all [Prerequisites](#prerequisites) have been installed.** 
 
-> As of Nov 20, 2025, Alpaca does not provide a hosted Remote MCP Server. To use Alpaca's MCP Server on the Claude mobile app, you need to host it remotely on a cloud service, then connect it as a Connector on Claude desktop to access it from the mobile app. For more information, visit "[Connecting Claude to a tool](https://support.claude.com/en/articles/11724452-using-the-connectors-directory-to-extend-claude-s-capabilities)" or our learn article “[How to Deploy Alpaca’s MCP Server Remotely on Claude Mobile App](https://alpaca.markets/learn/how-to-deploy-alpaca-mcp-server-remotely-on-claude-mobile-app)”.
+> As of Nov 20, 2025, Alpaca does not provide a hosted Remote MCP Server. To use Alpaca's MCP Server on the Claude mobile app, you need to host it remotely on a cloud service, then connect it as a Connector on Claude desktop to access it from the mobile app. For more information, visit "[Connecting Claude to a tool](https://support.claude.com/en/articles/11724452-using-the-connectors-directory-to-extend-claude-s-capabilities)" or our learn article "[How to Deploy Alpaca's MCP Server Remotely on Claude Mobile App](https://alpaca.markets/learn/how-to-deploy-alpaca-mcp-server-remotely-on-claude-mobile-app)".
 
 ## Overview of Setting Up
 Below is an example overview showing one approach to set up a remote Alpaca MCP Server using <b>Docker</b> and connect it to the Claude mobile app. Other deployment methods are also possible.
 
-1. Install Alpaca’s MCP Server locally, then build and push a Docker image
-2. Deploy the Alpaca’s MCP Server remotely using a cloud service
+1. Install Alpaca's MCP Server locally, then build and push a Docker image
+2. Deploy the Alpaca's MCP Server remotely using a cloud service
 3. Connect it to Claude AI to execute trades through natural language
 
 
-## Step 1: Install the Alpaca’s MCP Server
-Start by installing Alpaca’s MCP Server on your local machine. Open Terminal (macOS/Linux) or Command Prompt/PowerShell (Windows), then enter the following commands:
+## Step 1: Install the Alpaca's MCP Server
+Start by installing Alpaca's MCP Server on your local machine. Open Terminal (macOS/Linux) or Command Prompt/PowerShell (Windows), then enter the following commands:
 ```bash
 git clone https://github.com/alpacahq/alpaca-mcp-server.git
 cd alpaca-mcp-server
@@ -662,7 +664,7 @@ docker version
 docker info
 ```
 
-Then, log in to Docker Hub through CLI. You’ll be prompted for your Docker Hub username and password. This is required for pushing Docker images to Docker hub later.
+Then, log in to Docker Hub through CLI. You'll be prompted for your Docker Hub username and password. This is required for pushing Docker images to Docker hub later.
 ```bash
 docker login
 ```
@@ -685,7 +687,7 @@ docker run --rm -p 8000:8000 -e PORT=8000 username/custom-docker-image-name:v0.1
 Now that we've pushed the Docker image (containerized Alpaca's MCP Server) to Docker Hub, we can host it as a web service using a cloud platform such as AWS, Azure, or GCP. **You can use any cloud platform you prefer.** 
 
 ### Method 1: Render
-For a simpler approach, visit our learn article “[How to Deploy Alpaca’s MCP Server Remotely on Claude Mobile App](https://alpaca.markets/learn/how-to-deploy-alpaca-mcp-server-remotely-on-claude-mobile-app)” where we demonstrate using [Render](https://render.com/) instead.
+For a simpler approach, visit our learn article "[How to Deploy Alpaca's MCP Server Remotely on Claude Mobile App](https://alpaca.markets/learn/how-to-deploy-alpaca-mcp-server-remotely-on-claude-mobile-app)" where we demonstrate using [Render](https://render.com/) instead.
 
 ### Method 2: Google Kubernetes Engine (GKE)
 We also provide a [Helm chart](https://helm.sh/) under `alpaca-mcp-server/charts/alpaca-mcp-server` for deploying the Alpaca's MCP Server to [Kubernetes](https://kubernetes.io/) (Google Kubernetes Engine) as an example.
@@ -724,15 +726,15 @@ Once deploy Alpaca's MCP Server, it will be accessible at `https://your-domain.c
 
 From a chat:
 * Click the "Search and tools" button on the lower left of your chat interface.
-* From the menu, select Manage connectors.”
+* From the menu, select Manage connectors."
 * Add custom connector" and enter your preferred MCP Server name (e.g., Alpaca's MCP Server) and the URL `https://your-domain.com/mcp` in "Remote MCP Server URL" (ensure it ends with `/mcp`)
 
-**Step 3. Use Alpaca’s MCP Server on Claude Mobile App**
+**Step 3. Use Alpaca's MCP Server on Claude Mobile App**
 Once you successfully connect Alpaca's MCP Server to Claude web, it will also be available as a connector in the Claude mobile app.
 
 * Open the Claude mobile app. On the chat screen, tap the plus (+) icon next to the message box to open additional options.
 * In the menu that appears, scroll and tap Manage Connectors to view all available and custom connectors.
-* In the Connectors list, look for Alpaca’s MCP Server under Custom Connectors. Tap it to enable and start using it within your Claude’s mobile app.
+* In the Connectors list, look for Alpaca's MCP Server under Custom Connectors. Tap it to enable and start using it within your Claude's mobile app.
 
 </details>
 
@@ -742,13 +744,13 @@ Once you successfully connect Alpaca's MCP Server to Claude web, it will also be
 
 **Note: These steps assume all [Prerequisites](#prerequisites) have been installed.** 
 
-> As of Nov 20, 2025, Alpaca does not provide a hosted Remote MCP Server. To use Alpaca's MCP Server on the ChatGPT app, you need to host it remotely on a cloud service, then connect it as a Connector on ChatGPT web or mobile app to access it. For more information, visit "[Connectors in ChatGPT](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt)" or our learn article “[How to Deploy Alpaca’s MCP Server Remotely on Claude Mobile App](https://alpaca.markets/learn/how-to-deploy-alpaca-mcp-server-remotely-on-claude-mobile-app)” as a reference.
+> As of Nov 20, 2025, Alpaca does not provide a hosted Remote MCP Server. To use Alpaca's MCP Server on the ChatGPT app, you need to host it remotely on a cloud service, then connect it as a Connector on ChatGPT web or mobile app to access it. For more information, visit "[Connectors in ChatGPT](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt)" or our learn article "[How to Deploy Alpaca's MCP Server Remotely on Claude Mobile App](https://alpaca.markets/learn/how-to-deploy-alpaca-mcp-server-remotely-on-claude-mobile-app)" as a reference.
 
 ### Overview of Setting Up
 Below is an example overview showing one approach to set up a remote Alpaca MCP Server using <b>Docker</b> and connect it to the ChatGPT. Other deployment methods are also possible.
 
-1. Install Alpaca’s MCP Server locally, then build and push a Docker image
-2. Deploy the Alpaca’s MCP Server remotely using a cloud service
+1. Install Alpaca's MCP Server locally, then build and push a Docker image
+2. Deploy the Alpaca's MCP Server remotely using a cloud service
 3. Connect it to ChatGPT to execute trades through natural language
 
 For more information, refer to [Claude Mobile Configuration](#claude-mobile-configuration) above or visit our learn article "[How to Deploy Alpaca's MCP Server Remotely on Claude Mobile App](https://alpaca.markets/learn/how-to-deploy-alpaca-mcp-server-remotely-on-claude-mobile-app)" as a reference.
@@ -770,7 +772,7 @@ For Cursor users, you can quickly install Alpaca from the Cursor Directory in ju
 **1. Find Alpaca in the [Cursor Directory](https://cursor.directory/mcp/alpaca)**\
 **2. Click "Add to Cursor" to launch Cursor on your computer**\
 **3. Enter your API Key and Secret Key**\
-**4. You’re all set to start using it**
+**4. You're all set to start using it**
 
 ## Method 2: install.py (Alternative local setup)
 
@@ -1202,7 +1204,7 @@ Update your Claude Desktop configuration to use HTTP:
 - **uv/uvx not found**: Install uv from the official guide (https://docs.astral.sh/uv/getting-started/installation/) and then restart your terminal so `uv`/`uvx` are on PATH.
 - **`.env` not applied**: Ensure the server starts in the same directory as `.env`. Remember MCP client `env` overrides `.env`.
 - **Credentials missing**: Set `ALPACA_API_KEY` and `ALPACA_SECRET_KEY` in `.env` or in the client's `env` block. Paper mode default is `ALPACA_PAPER_TRADE = True`.
-- **Client didn’t pick up new config**: Restart the client (Cursor, Claude Desktop, VS Code) after changes.
+- **Client didn't pick up new config**: Restart the client (Cursor, Claude Desktop, VS Code) after changes.
 - **HTTP port conflicts**: If using `--transport http`, change `--port` to a free port.
 
 
@@ -1215,11 +1217,11 @@ Alpaca does not prepare, edit, endorse, or approve Third Party Content. Alpaca d
 
 All investments involve risk, and the past performance of a security, or financial product does not guarantee future results or returns. There is no guarantee that any investment strategy will achieve its objectives. Please note that diversification does not ensure a profit, or protect against loss. There is always the potential of losing money when you invest in securities, or other financial products. Investors should consider their investment objectives and risks carefully before investing.
 
-The algorithm’s calculations are based on historical and real-time market data but may not account for all market factors, including sudden price moves, liquidity constraints, or execution delays. Model assumptions, such as volatility estimates and dividend treatments, can impact performance and accuracy. Trades generated by the algorithm are subject to brokerage execution processes, market liquidity, order priority, and timing delays. These factors may cause deviations from expected trade execution prices or times. Users are responsible for monitoring algorithmic activity and understanding the risks involved. Alpaca is not liable for any losses incurred through the use of this system.
+The algorithm's calculations are based on historical and real-time market data but may not account for all market factors, including sudden price moves, liquidity constraints, or execution delays. Model assumptions, such as volatility estimates and dividend treatments, can impact performance and accuracy. Trades generated by the algorithm are subject to brokerage execution processes, market liquidity, order priority, and timing delays. These factors may cause deviations from expected trade execution prices or times. Users are responsible for monitoring algorithmic activity and understanding the risks involved. Alpaca is not liable for any losses incurred through the use of this system.
 
 Past hypothetical backtest results do not guarantee future returns, and actual results may vary from the analysis.
 
-The Paper Trading API is offered by AlpacaDB, Inc. and does not require real money or permit a user to transact in real securities in the market. Providing use of the Paper Trading API is not an offer or solicitation to buy or sell securities, securities derivative or futures products of any kind, or any type of trading or investment advice, recommendation or strategy, given or in any manner endorsed by AlpacaDB, Inc. or any AlpacaDB, Inc. affiliate and the information made available through the Paper Trading API is not an offer or solicitation of any kind in any jurisdiction where AlpacaDB, Inc. or any AlpacaDB, Inc. affiliate (collectively, “Alpaca”) is not authorized to do business.
+The Paper Trading API is offered by AlpacaDB, Inc. and does not require real money or permit a user to transact in real securities in the market. Providing use of the Paper Trading API is not an offer or solicitation to buy or sell securities, securities derivative or futures products of any kind, or any type of trading or investment advice, recommendation or strategy, given or in any manner endorsed by AlpacaDB, Inc. or any AlpacaDB, Inc. affiliate and the information made available through the Paper Trading API is not an offer or solicitation of any kind in any jurisdiction where AlpacaDB, Inc. or any AlpacaDB, Inc. affiliate (collectively, "Alpaca") is not authorized to do business.
 
 Securities brokerage services are provided by Alpaca Securities LLC ("Alpaca Securities"), member [FINRA](https://www.finra.org/)/[SIPC](https://www.sipc.org/), a wholly-owned subsidiary of AlpacaDB, Inc. Technology and services are offered by AlpacaDB, Inc.
 
@@ -1238,3 +1240,4 @@ The user agent for API calls defaults to 'ALPACA-MCP-SERVER' to help Alpaca iden
 
 ### MCP Registry Metadata
 mcp-name: io.github.alpacahq/alpaca-mcp-server
+```
