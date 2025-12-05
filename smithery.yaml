@@ -1,0 +1,51 @@
+# smithery.yaml
+# Cấu hình để deploy Alpaca MCP Server (Python/Docker) trên Smithery.ai
+
+runtime: "container"
+
+# --- Cấu hình Build ---
+# Smithery sẽ tìm Dockerfile trong thư mục gốc và build image từ đó.
+build:
+  dockerfile: "Dockerfile"
+  dockerBuildPath: "."
+
+# --- Cấu hình Chạy Server ---
+# Định nghĩa cách Smithery khởi động server sau khi build xong.
+startCommand:
+  type: "http"
+  # Lệnh để chạy server bên trong container.
+  # --transport streamable-http: Sử dụng giao thức HTTP theo chuẩn MCP.
+  # --host 0.0.0.0: Lắng nghe trên tất cả các network interface trong container.
+  # --port $PORT: Smithery sẽ tự động cung cấp biến môi trường $PORT.
+  command: "alpaca-mcp-server serve --transport streamable-http --host 0.0.0.0 --port $PORT"
+  
+  # --- Schema Cấu hình ---
+  # Định nghĩa các biến người dùng cần nhập trên giao diện Smithery.
+  # Giúp bảo mật API keys, không hardcode vào code.
+  configSchema:
+    type: "object"
+    required:
+      - ALPACA_API_KEY
+      - ALPACA_SECRET_KEY
+    properties:
+      ALPACA_API_KEY:
+        type: "string"
+        title: "Alpaca API Key"
+        description: "API Key từ dashboard Alpaca của bạn."
+      ALPACA_SECRET_KEY:
+        type: "string"
+        title: "Alpaca Secret Key"
+        description: "Secret Key tương ứng từ dashboard Alpaca."
+      ALPACA_PAPER_TRADE:
+        type: "boolean"
+        title: "Sử dụng Paper Trading"
+        description: "Check để sử dụng môi trường giao dịch giấy."
+        default: true
+
+# --- Biến Môi trường ---
+# Ánh xạ các giá trị từ configSchema vào biến môi trường cho container.
+# Server Alpaca sẽ đọc các biến này để xác thực.
+env:
+  ALPACA_API_KEY: '{{ config.ALPACA_API_KEY }}'
+  ALPACA_SECRET_KEY: '{{ config.ALPACA_SECRET_KEY }}'
+  ALPACA_PAPER_TRADE: '{{ config.ALPACA_PAPER_TRADE }}'
