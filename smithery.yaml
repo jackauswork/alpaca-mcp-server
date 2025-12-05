@@ -26,13 +26,13 @@ startCommand:
     type: "object"
     required:
       - ALPACA_API_KEY
-      - ALPACA_SECRET_KEY
+      - ALPACA_API_SECRET_KEY
     properties:
       ALPACA_API_KEY:
         type: "string"
         title: "Alpaca API Key"
         description: "API Key từ dashboard Alpaca của bạn."
-      ALPACA_SECRET_KEY:
+      ALPACA_API_SECRET_KEY:
         type: "string"
         title: "Alpaca Secret Key"
         description: "Secret Key tương ứng từ dashboard Alpaca."
@@ -47,5 +47,6 @@ startCommand:
 # Server Alpaca sẽ đọc các biến này để xác thực.
 env:
   ALPACA_API_KEY: '{{ config.ALPACA_API_KEY }}'
-  ALPACA_SECRET_KEY: '{{ config.ALPACA_SECRET_KEY }}'
+  ALPACA_SECRET_KEY: '{{ config.ALPACA_API_SECRET_KEY }}'
   ALPACA_PAPER_TRADE: '{{ config.ALPACA_PAPER_TRADE }}'
+  ALPACA_BASE_URL: "https://paper-api.alpaca.markets" # URL cho môi trường paper trading
